@@ -1,0 +1,10 @@
+let
+    Source = SharePoint.Contents("https://share.connect.organization/teams/TeamsChannelName"), //To get contents to your sharepoint based on the URL
+    Documents = Source{[Name="Documents"]}[Content], //To get content from "Document" folder
+    General = Documents{[Name="General"]}[Content], //To get content from "General" folder
+    PowerBIFolder = General{[Name="For Power BI Use"]}[Content], //To get content from "Power BI Use" folder
+    CollectionBinary = PowerBIFolder{[Name="Collection_All.xlsx"]}[Content], //To get binary content (the file content) from "Collection_All.xlsx" file
+    CollectionContent = Excel.Workbook(CollectionBinary), //Read the binary content using Excel and you will see them in a form of Objects like Sheet, Table, etc.
+    CollectionData = CollectionContent{[Item="Collection"]}[Data] //Selected --> Choose based on what you want
+in
+    CollectionData //Put the last thing you want to this part
