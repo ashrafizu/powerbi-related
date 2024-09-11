@@ -7,4 +7,4 @@ let
     CollectionContent = Excel.Workbook(CollectionBinary), //Read the binary content using Excel and you will see them in a form of Objects like Sheet, Table, etc.
     CollectionData = CollectionContent{[Item="Collection"]}[Data] //Selected --> Choose based on what you want
 in
-    CollectionData //Put the last thing you want to this part
+    CollectionData //Put the variable you want to this part
